@@ -14,6 +14,7 @@ app = Flask(__name__)
 
 # OpenWeather API details
 API_KEY = os.getenv("API_KEY")
+print("API_KEY loaded")
 BASE_URL = "http://api.openweathermap.org/data/2.5"
 
 # Load saved models
