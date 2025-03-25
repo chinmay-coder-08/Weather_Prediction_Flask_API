@@ -1,15 +1,19 @@
 from flask import Flask, request, jsonify
 import pickle
+import os
 import pandas as pd
 import numpy as np
 import requests
 from datetime import datetime, timedelta
 import pytz
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
 # OpenWeather API details
-API_KEY = "bb49fd938c370f56c61c5e7b541a82e8"
+API_KEY = os.getenv("API_KEY")
 BASE_URL = "http://api.openweathermap.org/data/2.5"
 
 # Load saved models
