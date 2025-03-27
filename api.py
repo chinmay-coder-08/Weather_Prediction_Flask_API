@@ -7,10 +7,11 @@ import requests
 from datetime import datetime, timedelta
 import pytz
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 load_dotenv()
-
 app = Flask(__name__)
+CORS(app, origins="http://127.0.0.1:5500/")
 
 # OpenWeather API details
 API_KEY = os.getenv("API_KEY")
