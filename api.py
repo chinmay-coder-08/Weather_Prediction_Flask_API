@@ -11,7 +11,7 @@ from flask_cors import CORS
 
 load_dotenv()
 app = Flask(__name__)
-CORS(app, origins="http://127.0.0.1:5500/")
+CORS(app, origins="*")
 
 # OpenWeather API details
 API_KEY = os.getenv("API_KEY")
