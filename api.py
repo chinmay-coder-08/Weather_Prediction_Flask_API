@@ -14,20 +14,17 @@ app = Flask(__name__)
 
 # OpenWeather API details
 API_KEY = os.getenv("API_KEY")
-print("API_KEY loaded")
 BASE_URL = "http://api.openweathermap.org/data/2.5"
 
 # Load saved models
-def load_models():
-    with open("./models/rain_model.pkl", "rb") as f:
-        rain_model = pickle.load(f)
-    with open("./models/temp_model.pkl", "rb") as f:
-        temp_model = pickle.load(f)
-    with open("./models/hum_model.pkl", "rb") as f:
-        hum_model = pickle.load(f)
-    with open("./models/label_encoder.pkl", "rb") as f:
-        le = pickle.load(f)
-    return rain_model, temp_model, hum_model, le
+with open("./models/rain_model.pkl", "rb") as f:
+    rain_model = pickle.load(f)
+with open("./models/temp_model.pkl", "rb") as f:
+    temp_model = pickle.load(f)
+with open("./models/hum_model.pkl", "rb") as f:
+    hum_model = pickle.load(f)
+with open("./models/label_encoder.pkl", "rb") as f:
+    le = pickle.load(f)
 
 # Fetch live weather data
 def get_current_weather(city):
@@ -71,9 +68,6 @@ def predict():
     
     if current_weather is None:
         return jsonify({"error": "Invalid city name or API issue"}), 400
-
-    # Load models
-    rain_model, temp_model, hum_model, le = load_models()
 
     # Prepare current data for prediction
     wind_deg = current_weather['WindGustDir'] % 360
