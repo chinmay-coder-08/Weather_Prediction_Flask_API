@@ -11,7 +11,7 @@ from flask_cors import CORS
 
 load_dotenv()
 app = Flask(__name__)
-CORS(app, origins="*")
+CORS(app, origins="https://coolweatherinfo.netlify.app/")
 
 # OpenWeather API details
 API_KEY = os.getenv("API_KEY")
